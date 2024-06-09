@@ -3,7 +3,7 @@ const API_URL = 'http://www.omdbapi.com/';
 const url = `${API_URL}?apikey=${API_KEY}&t=`;
 
 const fetchSearch = async (searchTerm) => {
-    const response = await fetch(API_URL + searchTerm)
+    const response = await fetch(url + searchTerm)
     const resData = await response.json()
     return resData.results
 }
