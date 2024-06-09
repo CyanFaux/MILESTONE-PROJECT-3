@@ -1,6 +1,6 @@
 // Import necessary dependencies
 import React, { useState, useEffect } from 'react';
-import { getPopularMovies } from './api'; // assuming you have an API module for fetching data
+import { getPopularMovies } from './api'; //Need api- see Josh for api//
 
 // Functional component for Home
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch popular movies when component mounts
+  // Retrieve movies
   useEffect(() => {
     async function fetchPopularMovies() {
       try {
