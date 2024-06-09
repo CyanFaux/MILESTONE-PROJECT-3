@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Movie extends Model {
     static associate({ Review }) {
-      Movie.hasMany(Review, { as: "reviews", foreignKey: "movie_id" });
+      Movie.hasMany(Review, { as: "review", foreignKey: "movie_id" });
     }
   }
 
@@ -13,10 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    poster: DataTypes.STRING,
     title: DataTypes.STRING,
     year: DataTypes.SMALLINT,
+    director: DataTypes.STRING,
     genre: DataTypes.STRING,
-    pic: DataTypes.STRING,
+    plot: DataTypes.STRING,
   },
   {
     sequelize,
