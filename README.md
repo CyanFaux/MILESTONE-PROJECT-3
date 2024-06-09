@@ -2,6 +2,9 @@
 # Nichole, Nathan, Josh, Andrew
 # Movie review app
 
+# This App's framework is based on the Rest-Rant App, 
+# refactored and repurposed for our needs.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
