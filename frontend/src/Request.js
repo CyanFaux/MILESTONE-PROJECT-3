@@ -1,9 +1,12 @@
+require('dotenv').config()
 const API_KEY = process.env.API_KEY
+const testPORT = process.env.PORT
+console.log(testPORT)
 const API_URL = 'http://www.omdbapi.com/';
-const url = `${API_URL}?t=`;
+const url = `${API_URL}?apikey=${API_KEY}&t=`;
 
 const fetchSearch = async (searchTerm) => {
-    const response = await fetch(url + searchTerm + `&${API_KEY}`)
+    const response = await fetch(url + searchTerm)
     const resData = await response.json()
     return resData.results
 }
