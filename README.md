@@ -2,6 +2,11 @@
 # Nichole, Nathan, Josh, Andrew
 # Movie review app
 
+# API Changelog
+-Included API in fetch request
+-Retrieving/viewing API data WIP 6/9/2024
+-Data retrieval success 6/9/2024
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

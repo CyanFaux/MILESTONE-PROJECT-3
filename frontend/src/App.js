@@ -4,7 +4,7 @@ import SearchBar from './components/searchBar';
 import { createResource } from './Request';
 
 function App() {
-  let [searchTerm, setSearchTerm] = useState('')
+  let [searchTerm, setSearchTerm] = useState('Jurassic Park')
   let [data, setData] = useState(null)
 
   const handleSearch = (e, term) => {
@@ -13,24 +13,17 @@ function App() {
   }
 
   useEffect(() => {
-    if(searchTerm) {
-      // setData(fetchData(searchTerm))
-      const fetchData = async () => {
-        const resource = createResource(searchTerm)
-        try{
-          const res = await resource.result.read()
-          setData(res)
-          console.log(res)
-        }catch(err){
-          console.error(err)
-        }
-      }
-      fetchData()
+    if(searchTerm){
+      setData(createResource(searchTerm).result.read)
     }
   }, [searchTerm])
 
+  // useEffect(() => {
+
+  //   console.log(data)
+  // }, [data])
+
   return (
-    
     <div className="App">
       <SearchBar handleSearch={handleSearch} />
     </div>
