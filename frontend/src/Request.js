@@ -1,9 +1,9 @@
 const API_KEY = process.env.API_KEY
 const API_URL = 'http://www.omdbapi.com/';
-const url = `${API_URL}?apikey=${API_KEY}&t=`;
+const url = `${API_URL}?t=`;
 
 const fetchSearch = async (searchTerm) => {
-    const response = await fetch(url + searchTerm)
+    const response = await fetch(url + searchTerm + `&${API_KEY}`)
     const resData = await response.json()
     return resData.results
 }

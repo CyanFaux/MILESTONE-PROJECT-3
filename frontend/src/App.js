@@ -18,7 +18,7 @@ function App() {
       const fetchData = async () => {
         const resource = createResource(searchTerm)
         try{
-          const res = resource.result.read()
+          const res = await resource.result.read()
           setData(res)
           console.log(res)
         }catch(err){
