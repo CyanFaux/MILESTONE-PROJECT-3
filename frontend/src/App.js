@@ -22,4 +22,19 @@ function App() {
   );
 }
 
+import React from 'react';
+import Header from './Header';
+
+function App() {
+    return (
+        <div>
+            <Header />
+            <main>
+                <h1>MovieMind</h1>
+            </main>
+        </div>
+    );
+}
+
 export default App;
+
