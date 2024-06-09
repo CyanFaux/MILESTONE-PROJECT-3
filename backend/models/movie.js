@@ -24,4 +24,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: "Movie",
   }
 );
+return Movie;
 };
