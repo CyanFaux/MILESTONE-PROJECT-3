@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import SearchBar from './components/searchBar';
+import SearchBar from '/components/searchBar';
 import { createResource } from './Request';
 
 function App() {
