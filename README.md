@@ -2,6 +2,9 @@
 # Nichole, Nathan, Josh, Andrew
 # Movie review app
 
+# This App's framework is based on the Rest-Rant App, 
+# refactored and repurposed for our needs.
+
 # API Changelog
 -Included API in fetch request
 -Retrieving/viewing API data WIP 6/9/2024
