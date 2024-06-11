@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Suspense} from 'react';
 import './App.css';
-import SearchBar from '/components/searchBar';
+import SearchBar from './components/searchBar';
 import { createResource } from './Request';
+import Display from './components/Display';
+import Loading from './Loading';
+// import { render } from '@testing-library/react';
 
 function App() {
   let [searchTerm, setSearchTerm] = useState('')
-  let [data, setData] = useState(null)
+  let [resource, setResource] = useState(null)
 
   const handleSearch = (e, term) => {
     e.preventDefault()
@@ -13,25 +16,30 @@ function App() {
   }
 
   useEffect(() => {
-    if(searchTerm) {
-      // setData(fetchData(searchTerm))
-      const fetchData = async () => {
-        const resource = createResource(searchTerm)
-        try{
-          const res = await resource.result.read()
-          setData(res)
-          console.log(res)
-        }catch(err){
-          console.error(err)
-        }
-      }
-      fetchData()
+    if(searchTerm){
+      setResource(createResource(searchTerm))
     }
   }, [searchTerm])
 
+  useEffect(() => {
+    console.log(resource)
+  }, [resource])
+
+  const renderMovie = () => {
+    if(resource) {
+      return(
+        <Suspense fallback={<Loading />}>
+          <Display item={resource.result.read()} />
+        </Suspense>
+      )
+    }
+    return null
+  }
+
   return (
     <div className="App">
-    <SearchBar handleSearch={handleSearch} />
+      <SearchBar handleSearch={handleSearch} />
+      {renderMovie()}
     </div>
   );
 }

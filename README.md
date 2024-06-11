@@ -5,6 +5,11 @@
 # This App's framework is based on the Rest-Rant App, 
 # refactored and repurposed for our needs.
 
+# API Changelog
+-Included API in fetch request
+-Retrieving/viewing API data WIP 6/9/2024
+-Data retrieval success 6/9/2024
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
