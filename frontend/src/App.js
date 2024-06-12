@@ -7,13 +7,10 @@ import Loading from './Loading';
 // import { render } from '@testing-library/react';
 
 function App() {
-  let [searchTerm, setSearchTerm] = useState('')
+  
   let [resource, setResource] = useState(null)
 
-  const handleSearch = (e, term) => {
-    e.preventDefault()
-    setSearchTerm(term)
-  }
+  
 
   useEffect(() => {
     if(searchTerm){

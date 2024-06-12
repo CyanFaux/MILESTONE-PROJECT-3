@@ -1,11 +1,28 @@
 import { useState, useEffect, useContext } from 'react'
 import { useHistory } from "react-router";
 import { CurrentUser } from './contexts/CurrentUser';
-import SearchBar from './components/searchBar';
+import SearchBar from './searchBar';
+import { createResource } from '../Request';
 
 function Navigation() {
-
+    let [searchTerm, setSearchTerm] = useState('')
     const history = useHistory()
+
+    const handleSearch = (e, term) => {
+        e.preventDefault()
+        setSearchTerm(term)
+        const resource = createResource(term)
+        try{
+            const data = resource.result.read()
+            if(data && data.imdbId){
+                history.push(`/movies/${data.imdbId}`)
+            }else{
+                return `Movie not found :(`
+            }
+        } catch (err) {
+            return `Failed to fetch movie`, err
+        }
+    }
 
     const { currentUser } = useContext(CurrentUser)
 
@@ -48,7 +65,7 @@ function Navigation() {
     
     return (
         <nav>
-    
+            <SearchBar handleSearch={handleSearch} />
             <ul>
                 <li>
                     <a href="#" onClick={() => history.push("/")}>
