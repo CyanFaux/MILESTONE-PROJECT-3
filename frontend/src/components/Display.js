@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Loading from "../Loading";
 import { createResource } from "../Request";
 
-function Display(props){
+function Display(){
     const { imdbId } = useParams()
     const [ resource, setResource ] = useState(null)
 

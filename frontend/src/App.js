@@ -7,36 +7,9 @@ import Loading from './Loading';
 // import { render } from '@testing-library/react';
 
 function App() {
-  
-  let [resource, setResource] = useState(null)
-
-  
-
-  useEffect(() => {
-    if(searchTerm){
-      setResource(createResource(searchTerm))
-    }
-  }, [searchTerm])
-
-  useEffect(() => {
-    console.log(resource)
-  }, [resource])
-
-  const renderMovie = () => {
-    if(resource) {
-      return(
-        <Suspense fallback={<Loading />}>
-          <Display item={resource.result.read()} />
-        </Suspense>
-      )
-    }
-    return null
-  }
-
   return (
     <div className="App">
-      <SearchBar handleSearch={handleSearch} />
-      {renderMovie()}
+      
     </div>
   );
 }
