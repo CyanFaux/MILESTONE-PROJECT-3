@@ -21,10 +21,10 @@ const { Movie, Review, User } = db
 }) */
 
 
-router.get('/', async (req, res) => {
+/* router.get('/', async (req, res) => {
     const movies = await Movie.findAll()
-    res.json(movies)
-})
+    console.log(res.json(movies))
+}) */
 
 
 router.get('/:imbdId', async (req, res) => {
@@ -47,7 +47,7 @@ router.get('/:imbdId', async (req, res) => {
     }
 })
 
-router.put('/:imbdId', async (req, res) => {
+/* router.put('/:imbdId', async (req, res) => {
     let movieId = Number(req.params.movieId)
     if (isNaN(movieId)) {
         res.status(404).json({ message: `Invalid id "${movieId}"` })
@@ -88,7 +88,7 @@ router.delete('/:imbdId', async (req, res) => {
     if (req.currentUser?.role !== 'admin') {
         return res.status(403).json({ message: 'You are not allowed to delete movies' })
     }
-})
+}) */
 
 router.post('/:imbdId/reviews', async (req, res) => {
     const movieId = Number(req.params.movieId)
