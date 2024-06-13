@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/:movieId', async (req, res) => {
+router.get('/:imbdId', async (req, res) => {
     let movieId = Number(req.params.movieId)
     if (isNaN(movieId)) {
         res.status(404).json({ message: `Invalid id "${movieId}"` })
@@ -47,7 +47,7 @@ router.get('/:movieId', async (req, res) => {
     }
 })
 
-router.put('/:movieId', async (req, res) => {
+router.put('/:imbdId', async (req, res) => {
     let movieId = Number(req.params.movieId)
     if (isNaN(movieId)) {
         res.status(404).json({ message: `Invalid id "${movieId}"` })
@@ -68,7 +68,7 @@ router.put('/:movieId', async (req, res) => {
     }
 })
 
-router.delete('/:movieId', async (req, res) => {
+router.delete('/:imbdId', async (req, res) => {
     let movieId = Number(req.params.movieId)
     if (isNaN(movieId)) {
         res.status(404).json({ message: `Invalid id "${movieId}"` })
@@ -90,7 +90,7 @@ router.delete('/:movieId', async (req, res) => {
     }
 })
 
-router.post('/:movieId/reviews', async (req, res) => {
+router.post('/:imbdId/reviews', async (req, res) => {
     const movieId = Number(req.params.movieId)
 
     req.body.rant = req.body.rant ? true : false
@@ -119,7 +119,7 @@ router.post('/:movieId/reviews', async (req, res) => {
     })
 })
 
-router.delete('/:movieId/reviews/:reviewId', async (req, res) => {
+router.delete('/:imbdId/reviews/:reviewId', async (req, res) => {
     let movieId = Number(req.params.movieId)
     let reviewId = Number(req.params.reviewId)
 
