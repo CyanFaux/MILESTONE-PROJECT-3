@@ -5,15 +5,15 @@ import { createResource } from './Request';
 import Display from './components/Display';
 import Loading from './Loading';
 import Navigation from './components/Navigation';
-import { CurrentUserContext } from './contexts/CurrentUser';
+import { CurrentUserProvider, CurrentUserContext } from './contexts/CurrentUser';
 // import { render } from '@testing-library/react';
 
 function App() {
   return (
     <div className="App">
-      <CurrentUserContext>
+      <CurrentUserProvider>
       <Navigation />
-      </CurrentUserContext>
+      </CurrentUserProvider>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from "react-router";
-import { CurrentUserContext } from '../contexts/CurrentUser'
+import { CurrentUserContext, CurrentUserProvider } from '../contexts/CurrentUser'
 import SearchBar from './searchBar';
 import { createResource } from '../Request';
 
@@ -24,17 +24,17 @@ function Navigation() {
         }
     }
 
-    const { currentUser } = useContext(CurrentUser)
+    const { currentUser } = useContext(CurrentUserContext)
 
     let loginActions = (
         <>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => navigate("/sign-up")}>
+                <a onClick={() => navigate("/sign-up")}>
                     Sign Up
                 </a>
             </li>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => navigate("/login")}>
+                <a onClick={() => navigate("/login")}>
                     Login
                 </a>
             </li>
@@ -53,7 +53,7 @@ function Navigation() {
     
     let reviewButton = null;
 
-    if (currentUser/* ?.authenticated <- redundant?*/) {
+    if (currentUser) {
         reviewButton = (
             <li>
                 <button onClick={() => navigate("/leave-review")}>
