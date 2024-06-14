@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from 'react'
-import { useHistory } from "react-router";
-import { CurrentUser } from './contexts/CurrentUser';
+import { useNavigate } from "react-router";
+import { CurrentUserContext, CurrentUserProvider } from '../contexts/CurrentUser'
 import SearchBar from './searchBar';
 import { createResource } from '../Request';
 
 function Navigation() {
     let [searchTerm, setSearchTerm] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const handleSearch = (e, term) => {
         e.preventDefault()
@@ -15,7 +15,7 @@ function Navigation() {
         try{
             const data = resource.result.read()
             if(data && data.imdbId){
-                history.push(`/movies/${data.imdbId}`)
+                navigate(`/movies/${data.imdbId}`)
             }else{
                 return `Movie not found :(`
             }
@@ -24,17 +24,17 @@ function Navigation() {
         }
     }
 
-    const { currentUser } = useContext(CurrentUser)
+    const { currentUser } = useContext(CurrentUserContext)
 
     let loginActions = (
         <>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => history.push("/sign-up")}>
+                <a onClick={() => navigate("/sign-up")}>
                     Sign Up
                 </a>
             </li>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => history.push("/login")}>
+                <a onClick={() => navigate("/login")}>
                     Login
                 </a>
             </li>
@@ -53,10 +53,10 @@ function Navigation() {
     
     let reviewButton = null;
 
-    if (currentUser?.authenticated) {
+    if (currentUser) {
         reviewButton = (
             <li>
-                <button onClick={() => history.push("/leave-review")}>
+                <button onClick={() => navigate("/leave-review")}>
                     Leave Review
                 </button>
             </li>
@@ -68,17 +68,12 @@ function Navigation() {
             <SearchBar handleSearch={handleSearch} />
             <ul>
                 <li>
-                    <a href="#" onClick={() => history.push("/")}>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={() => history.push("/movies")}>
+                    <a onClick={() => navigate("/movies")}>
                         Movies
                     </a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => history.push("/movies/review")}>
+                    <a onClick={() => navigate("/movies/review")}>
                         Add a Review
                     </a>
                 </li>
