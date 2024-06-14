@@ -21,30 +21,13 @@ const { Movie, Review, User } = db
 }) */
 
 
-/* router.get('/', async (req, res) => {
-    const movies = await Movie.findAll()
-    console.log(res.json(movies))
-}) */
+router.get('/'), async (req, res) => {
+    return `Search for a movie!`
+}
 
 
 router.get('/:imbdId', async (req, res) => {
-    let movieId = Number(req.params.movieId)
-    if (isNaN(movieId)) {
-        res.status(404).json({ message: `Invalid id "${movieId}"` })
-    } else {
-        const movie = await Movies.findOne({
-            where: { movieId: movieId },
-            include: {
-                association: 'comments',
-                include: 'author'
-            }
-        })
-        if (!movie) {
-            res.status(404).json({ message: `Could not find movie with id "${movieId}"` })
-        } else {
-            res.json(movie)
-        }
-    }
+    
 })
 
 /* router.put('/:imbdId', async (req, res) => {

@@ -20,11 +20,15 @@ function Display(){
                 const data = resource.result.read()
                 return (
                     <div>
-                        <img src={data.Poster} alt="Movie Poster" />
-                        <h2>{data.Title}</h2>
-                        <h4>{data.Year}</h4>
-                        <h4>{data.Rated}</h4>
-                        <h3>IMDB Rating: {data.imdbRating}</h3>
+                        <div>
+                            <img src={data.Poster} alt="Movie Poster" />
+                        </div>
+                        <div>
+                            <h2>{data.Title}</h2>
+                            <h4>{data.Year}</h4>
+                            <h4>{data.Rated}</h4>
+                            <h3>IMDB Rating: {data.imdbRating}</h3>
+                        </div>
                     </div>
                 )
             }catch(error){
