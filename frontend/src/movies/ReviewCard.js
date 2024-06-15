@@ -1,14 +1,15 @@
-
+import React, { useContext } from 'react';
+import { CurrentUser } from '../contexts/CurrentUser';
 
 function ReviewCard({ comment, onDelete }) {
-    const { currentUser} = useContext(CurrentUser)
+    const { currentUser } = useContext(CurrentUser);
     let deleteButton = null;
     if (currentUser?.userId === comment.authorId) {
         deleteButton = (
-            <button className="btn btn-danger" onClick = {onDelete} >
+            <button className="btn btn-danger" onClick={onDelete}>
                 Delete Comment
             </button>
-        )
+        );
     }
     return (
         <div className="border col-sm-4">
@@ -17,12 +18,9 @@ function ReviewCard({ comment, onDelete }) {
             <h3>
                 <strong>- {comment.author.firstName} {comment.author.lastName}</strong>
             </h3>
-           
-            <button className="btn btn-danger" onClick={onDelete} >
-                Delete Comment
-            </button>
+            {deleteButton}
         </div>
-    )
+    );
 }
 
 export default ReviewCard;
