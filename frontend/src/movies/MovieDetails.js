@@ -4,13 +4,13 @@ import ReviewCard from './ReviewCard'
 import NewReviewForm from "./NewReviewForm";
 
 function MovieDetails() {
-  const { movieId } = useParams()
+  const { imdbId } = useParams()
   const [movie, setMovie] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/movies/${movieId}`)
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/movies/${imdbId}`)
         const resData = await response.json()
         setMovie(resData)
       } catch (error) {
@@ -18,10 +18,10 @@ function MovieDetails() {
       }
     }
     fetchData()
-  }, [movieId])
+  }, [imdbId])
 
-  if (movie === null) {
-    return <h1>Loading</h1>
+  if (!movie) {
+    return <h1>Loading...</h1>
   }
 
   async function deleteReview(deletedReview) {

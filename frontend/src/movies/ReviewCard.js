@@ -1,25 +1,20 @@
+import React, { useContext } from 'react'
+import CurrentUserContext from '../contexts/CurrentUser'
+function ReviewCard({ review, onDelete }) {
+    const { currentUser} = useContext(CurrentUserContext)
 
-function ReviewCard({ comment, onDelete }) {
-    const { currentUser} = useContext(CurrentUser)
-    let deleteButton = null;
-    if (currentUser?.userId === comment.authorId) {
-        deleteButton = (
-            <button className="btn btn-danger" onClick = {onDelete} >
-                Delete Comment
-            </button>
-        )
-    }
     return (
         <div className="border col-sm-4">
-            <h2 className="rot">{comment.rot ? 'Brain Rot 🤢' : 'Mind Blown 🤯'}</h2>
-            <h4>{comment.content}</h4>
+            <h2 className="rot">{review.rot ? 'Brain Rot 🤢' : 'Mind Blown 🤯'}</h2>
+            <h4>{review.content}</h4>
             <h3>
-                <strong>- {comment.author.firstName} {comment.author.lastName}</strong>
+                <strong>- {review.author.firstName} {review.author.lastName}</strong>
             </h3>
-           
+           {currentUser?.userId === review.authorId && (
             <button className="btn btn-danger" onClick={onDelete} >
-                Delete Comment
+                Delete Review
             </button>
+            )}
         </div>
     )
 }

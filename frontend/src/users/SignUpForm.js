@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { useHistory, useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 function SignUpForm() {
 
-	const history = useHistory()
+	const navigate = useNavigate()
 
 	const [user, setUser] = useState({
 		firstName: '',
@@ -23,7 +23,7 @@ function SignUpForm() {
 			body: JSON.stringify(user)
 		})
 
-		history.push(`/`)
+		navigate(`/`)
 	}
 
     return (

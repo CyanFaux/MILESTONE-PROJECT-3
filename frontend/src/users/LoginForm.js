@@ -1,12 +1,12 @@
 import { useContext, useState } from "react"
-import { useHistory } from "react-router"
-import { CurrentUser } from "../contexts/CurrentUser"
+import { useNavigate } from "react-router"
+import CurrentUserContext from "../contexts/CurrentUser"
 
 function LoginForm() {
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
-    const { setCurrentUser } = useContext(CurrentUser)
+    const { setCurrentUser } = useContext(CurrentUserContext)
 
     const [credentials, setCredentials] = useState({
         email: '',
@@ -31,7 +31,7 @@ async function handleSubmit(e) {
     if (response.status === 200) {
         setCurrentUser(data.user)
         localStorage.setitem('token', data.token);
-        history.push(`/`)
+        navigate(`/`)
     } else {
         setErrorMessage(data.message)
     }

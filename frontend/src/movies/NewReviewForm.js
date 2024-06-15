@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react"
-import { useHistory } from "react-router"
+import { useContext, useState, useEffect } from "react"
+import CurrentUserContext from "../contexts/CurrentUser"
 
-function NewReviewForm({ place, onSubmit }) {
+function NewReviewForm({ movie, onSubmit }) {
+
+    const { currentUser } = useContext(CurrentUserContext)
 
     const [authors, setAuthors] = useState([])
 
@@ -35,8 +37,6 @@ function NewReviewForm({ place, onSubmit }) {
             authorId: authors[0]?.userId
         })
     }
-  
-    const { currentUser } = useContext(CurrentUser)
 
     if(!currentUser){
         return <p>You must be logged in to leave a 🤯 or 🤢.</p>
@@ -68,7 +68,7 @@ function NewReviewForm({ place, onSubmit }) {
                 <div className="form-group col-sm-4">
                     <label htmlFor="rot">Rot</label>
                     <input
-                        checked={place.rot}
+                        checked={movie.rot}
                         onClick={e => setComment({ ...comment, rot: e.target.checked })}
                         type="checkbox"
                         id="rot"
@@ -82,4 +82,4 @@ function NewReviewForm({ place, onSubmit }) {
     )
 }
 
-      
+export default NewReviewForm

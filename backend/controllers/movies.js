@@ -1,7 +1,7 @@
-const router = require('express').Router()
-const db = require("../models")
+const router = require("express").Router();
+const db = require("../models");
 
-const { Movie, Review, User } = db
+const { Movie, Review, User } = db;
 
 /* router.post('/', async (req, res) => {
     if (!req.body.pic) {
@@ -20,32 +20,32 @@ const { Movie, Review, User } = db
     res.json(place)
 }) */
 
+router.get("/", async (req, res) => {
+  const movies = await Movie.findAll();
+  console.log(res.json(movies));
+});
 
-/* router.get('/', async (req, res) => {
-    const movies = await Movie.findAll()
-    console.log(res.json(movies))
-}) */
-
-
-router.get('/:imbdId', async (req, res) => {
-    let movieId = Number(req.params.movieId)
-    if (isNaN(movieId)) {
-        res.status(404).json({ message: `Invalid id "${movieId}"` })
+router.get("/:imdbId", async (req, res) => {
+  let imdbId = Number(req.params.imdbId);
+  if (isNaN(imdbId)) {
+    res.status(404).json({ message: `Invalid id "${imdbId}"` });
+  } else {
+    const movie = await Movies.findOne({
+      where: { imdbId: imdbId },
+      include: {
+        association: "comments",
+        include: "author",
+      },
+    });
+    if (!movie) {
+      res
+        .status(404)
+        .json({ message: `Could not find movie with id "${imdbId}"` });
     } else {
-        const movie = await Movies.findOne({
-            where: { movieId: movieId },
-            include: {
-                association: 'comments',
-                include: 'author'
-            }
-        })
-        if (!movie) {
-            res.status(404).json({ message: `Could not find movie with id "${movieId}"` })
-        } else {
-            res.json(movie)
-        }
+      res.json(movie);
     }
-})
+  }
+});
 
 /* router.put('/:imbdId', async (req, res) => {
     let movieId = Number(req.params.movieId)
@@ -90,57 +90,68 @@ router.delete('/:imbdId', async (req, res) => {
     }
 }) */
 
-router.post('/:imbdId/reviews', async (req, res) => {
-    const movieId = Number(req.params.movieId)
+router.post("/:imdbId/reviews", async (req, res) => {
+  const imdbId = Number(req.params.imdbId);
 
-    req.body.rant = req.body.rant ? true : false
+  req.body.rant = req.body.rant ? true : false;
 
-    const movie = await Movie.findOne({
-        where: { movieId: movieId }
-    })
+  const movie = await Movie.findOne({
+    where: { imdbId: imdbId },
+  });
 
-    if (!movie) {
-        return res.status(404).json({ message: `Could not find movie with id "${movieId}"` })
-    }
+  if (!movie) {
+    return res
+      .status(404)
+      .json({ message: `Could not find movie with id "${imdbId}"` });
+  }
 
-    if (!req.currentUser) {
-        return res.status(404).json({ message: `You must be logged in to leave a review.` })
-    }
+  if (!req.currentUser) {
+    return res
+      .status(404)
+      .json({ message: `You must be logged in to leave a review.` });
+  }
 
-    const review = await Review.create({
-        ...req.body,
-        authorId: req.currentUser.userId,
-        movieId: movieId
-    })
+  const review = await Review.create({
+    ...req.body,
+    authorId: req.currentUser.userId,
+    imdbId: imdbId,
+  });
 
-    res.send({
-        ...review.toJSON(),
-        author: req.currentUser
-    })
-})
+  res.send({
+    ...review.toJSON(),
+    author: req.currentUser,
+  });
+});
 
-router.delete('/:imbdId/reviews/:reviewId', async (req, res) => {
-    let movieId = Number(req.params.movieId)
-    let reviewId = Number(req.params.reviewId)
+router.delete("/:imdbId/reviews/:reviewId", async (req, res) => {
+  let imdbId = Number(req.params.imdbId);
+  let reviewId = Number(req.params.reviewId);
 
-    if (isNaN(movieId)) {
-        res.status(404).json({ message: `Invalid id "${movieId}"` })
-    } else if (isNaN(reviewId)) {
-        res.status(404).json({ message: `Invalid id "${reviewId}"` })
+  if (isNaN(imdbId)) {
+    res.status(404).json({ message: `Invalid id "${imdbId}"` });
+  } else if (isNaN(reviewId)) {
+    res.status(404).json({ message: `Invalid id "${reviewId}"` });
+  } else {
+    const review = await Review.findOne({
+      where: { reviewId: reviewId, imdbId: imdbId },
+    });
+    if (!review) {
+      res
+        .status(404)
+        .json({
+          message: `Could not find review with id "${reviewId}" for movie with id "${imdbId}"`,
+        });
+    } else if (review.authorId !== req.currentUser?.userId) {
+      res
+        .status(403)
+        .json({
+          message: `You do not have permission to delete reviews "${review.reviewId}"`,
+        });
     } else {
-        const review = await Review.findOne({
-            where: { reviewId: reviewId, movieId: movieId }
-        })
-        if (!review) {
-            res.status(404).json({ message: `Could not find review with id "${reviewId}" for place with id "${placeId}"` })
-        } else if(review.authorId !== req.currentUser?.userId){
-            res.status(403).json({ message: `You do not have permission to delete reviews "${review.reviewId}"`})
-        }else {
-            await review.destroy()
-            res.json(review)
-        }
+      await review.destroy();
+      res.json(review);
     }
-})
+  }
+});
 
-
-module.exports = router
+module.exports = router;
