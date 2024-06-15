@@ -1,11 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, /* useEffect, */ useContext } from "react";
 import { useNavigate } from "react-router";
-import CurrentUserContext from "../contexts/CurrentUser";
+import UserContext from "../contexts/CurrentUser";
 import SearchBar from "./searchBar";
-import createResource from "../Request";
+import { createResource } from "../Request";
 
 function Navigation() {
-  let [searchTerm, setSearchTerm] = useState("");
+  let [/* searchTerm, */ setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const handleSearch = (e, term) => {
@@ -20,19 +20,19 @@ function Navigation() {
         return `Movie not found :(`;
       }
     } catch (err) {
-      return `Failed to fetch movie`, err;
+      return `Failed to fetch movie ${err}`;
     }
   };
 
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(UserContext);
 
   let loginActions = (
     <>
       <li style={{ float: "right" }}>
-        <a onClick={() => navigate("/sign-up")}>Sign Up</a>
+        <a href="/sign-up">Sign Up</a>
       </li>
       <li style={{ float: "right" }}>
-        <a onClick={() => navigate("/login")}>Login</a>
+        <a href="/login">Login</a>
       </li>
     </>
   );
@@ -60,12 +60,12 @@ function Navigation() {
       <SearchBar handleSearch={handleSearch} />
       <ul>
         <li>
-          <a href="#" onClick={() => navigate("/movies")}>
+          <a href="/movies">
             Search for a Movie Here
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => navigate("/movies/review")}>
+          <a href="/movies/review">
             Add a Review
           </a>
         </li>
