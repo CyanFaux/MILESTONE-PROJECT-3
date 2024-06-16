@@ -13,7 +13,7 @@ app.use(defineCurrentUser);
 
 // serve static front end in production mode
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.use(express.static(path.join(__dirname, "build")));
 }
 
 app.use(express.urlencoded({ extended: true }));
