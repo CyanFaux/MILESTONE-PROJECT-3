@@ -1,8 +1,8 @@
 import { useContext, useState, useEffect } from "react";
-import CurrentUserContext from "../contexts/CurrentUser";
+import UserContext from "../contexts/CurrentUser";
 
 function NewReviewForm({ movie, onSubmit }) {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(UserContext);
 
   const [authors, setAuthors] = useState([]);
 
