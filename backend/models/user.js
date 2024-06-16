@@ -3,8 +3,8 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate({ Review }) {
-      User.hasMany(Review, { as: "author", foreignKey: "author_id" });
+    static associate({ review }) {
+      User.hasMany(review, { as: "user", foreignKey: "user_id" });
     }
   }
   User.init(
@@ -13,13 +13,24 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.SMALLINT,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false,
       },
-      username: DataTypes.STRING,
-      email: DataTypes.STRING,
-      passwordDigest: DataTypes.STRING,
+      username: {
+        type: DataTypes.VARCHAR(50),
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.VARCHAR(100),
+        allowNull: false,
+      },
+      passwordDigest: {
+        type: DataTypes.VARCHAR(255),
+        allowNull: false,
+      },
       role: {
         type: DataTypes.ENUM,
         values: ["reviewer", "admin"],
+        allowNull: false,
       },
     },
     {

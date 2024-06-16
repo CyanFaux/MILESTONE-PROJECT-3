@@ -6,7 +6,9 @@ const app = express();
 const defineCurrentUser = require("./middleware/defineCurrentUser");
 const path = require("path");
 
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000" // replace with your React app's origin
+  }));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
