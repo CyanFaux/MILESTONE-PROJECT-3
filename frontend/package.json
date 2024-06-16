@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "main": "index.js",
-  "homepage": "./",
+  "homepage": "public/index.html",
   "scripts": {
     "start": "react-scripts start",
     "build": "npx react-scripts build",
