@@ -14,14 +14,13 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
+      username: DataTypes.STRING,
       email: DataTypes.STRING,
+      passwordDigest: DataTypes.STRING,
       role: {
         type: DataTypes.ENUM,
         values: ["reviewer", "admin"],
       },
-      passwordDigest: DataTypes.STRING,
     },
     {
       sequelize,
