@@ -10,11 +10,6 @@ export function CurrentUserProvider({ children }) {
       try {
         let response = await fetch(
           `${process.env.REACT_APP_SERVER_URL}/authentication/profile`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
         );
         let user = await response.json();
         setCurrentUser(user);
