@@ -2,7 +2,7 @@
 Nichole, Nathan, Josh, Andrew
 
 
-# Movie review app
+## Movie review app
 This App's framework is based on the Rest-Rant App, refactored and repurposed for our needs, utilizing AI tools. It's intended to be a place to write and post reviews on a variety of movies, pulled from the omdb api @ http://www.omdbapi.com/
 
 
@@ -21,7 +21,7 @@ To run the application locally, change to client folder. Then run 'npm install'.
  - Data retrieval success 6/9/2024
 
 
-### Current Errors
+## Current Errors
  - Uncaught TypeError: react__WEBPACK_IMPORTED_MODULE_0__.useContext(...) is undefined
     Navigation Navigation.js:27
     React 11
