@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import CurrentUserContext from "../contexts/CurrentUser";
+import UserContext from "../contexts/CurrentUser";
 function ReviewCard({ review, onDelete }) {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(UserContext);
 
   return (
     <div className="border col-sm-4">

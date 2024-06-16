@@ -18,13 +18,13 @@ function App() {
         <Router>
           <Navigation />
           <Routes>
-            {/*             <Route exact path="/" component={Home} /> */}
-            <Route exact path="/sign-up" component={SignUpForm} />
-            <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/movies" component={MovieIndex} />
-            <Route exact path="/movies/new" component={MovieDetails} />
-            <Route exact path="/movies/:imdbId" component={MovieIndex} />
-            <Route path="/" element={Error404} />
+            <Route exact path="/" element={<Splash />} />
+            <Route exact path="/sign-up" element={<SignUpForm />} />
+            <Route exact path="/login" element={<LoginForm />} />
+            <Route exact path="/movies" element={<MovieIndex />} />
+            <Route exact path="/movies/new" element={<MovieDetails />} />
+            <Route exact path="/movies/:imdbId" element={<MovieIndex />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </Router>
       </CurrentUserProvider>
