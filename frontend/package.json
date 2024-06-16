@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "npx react-scripts build --public-path./src/public",
+    "build": "npx react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
