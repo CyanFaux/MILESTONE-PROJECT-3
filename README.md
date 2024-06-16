@@ -6,7 +6,7 @@ Nichole, Nathan, Josh, Andrew
 This App's framework is based on the Rest-Rant App, refactored and repurposed for our needs, utilizing AI tools. It's intended to be a place to write and post reviews on a variety of movies, pulled from the omdb api @ http://www.omdbapi.com/
 
 
-# Style UI
+## Style UI
  - Brain theme
  - "Mindblown" and "Brainrot"
 
@@ -15,7 +15,7 @@ This App's framework is based on the Rest-Rant App, refactored and repurposed fo
 To run the application locally, change to client folder. Then run 'npm install'. Add a .env folder and specify PORT, DB_URI, DB_NAME, DB_PASSWORD. Then run 'nodemon'.
 
 
-# API Changelog
+## API Changelog
  - Included API in fetch request
  - Retrieving/viewing API data WIP 6/9/2024
  - Data retrieval success 6/9/2024
@@ -32,7 +32,7 @@ To run the application locally, change to client folder. Then run 'npm install'.
     js scheduler.development.js:633
     factory react refresh:6
     Webpack 24
-# Navigation.js:27
+### Navigation.js:27
 
  - Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.
 RenderedRoute@http://localhost:3000/static/js/bundle.js:40841:7
@@ -41,7 +41,7 @@ Router@http://localhost:3000/static/js/bundle.js:41470:7
 BrowserRouter@http://localhost:3000/static/js/bundle.js:39420:7
 CurrentUserProvider@http://localhost:3000/static/js/bundle.js:859:29
 div
-# App react-dom.development.js:86
+### App react-dom.development.js:86
 
  - Uncaught TypeError: react__WEBPACK_IMPORTED_MODULE_0__.useContext(...) is undefined
     Navigation Navigation.js:27
@@ -53,7 +53,7 @@ div
     js scheduler.development.js:633
     factory react refresh:6
     Webpack 24
-# Navigation.js:27
+### Navigation.js:27
 
  - The above error occurred in the <Navigation> component:
 
@@ -62,22 +62,22 @@ Router@http://localhost:3000/static/js/bundle.js:41470:7
 BrowserRouter@http://localhost:3000/static/js/bundle.js:39420:7
 CurrentUserProvider@http://localhost:3000/static/js/bundle.js:859:29
 div
-# App
+### App
 
 Consider adding an error boundary to your tree to customize error handling behavior.
 Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. react-dom.development.js:18704
 
 
-## Parts:
+# Parts:
 
 
-# Frontend API with Express and Node.js
+## Frontend API with Express and Node.js
  - Express server
  - CRUD routes
  - Sequelize to interact with db
 
 
-# PostgreSQL Database
+## PostgreSQL Database
  - Movies table
     - imdb_id, integer, not null, primary key
     - movie_title, varchar
