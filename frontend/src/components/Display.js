@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../Loading";
 import { createResource } from "../Request";
+import Image from "react-bootstrap/Image"
 
 function Display() {
   const { imdbId } = useParams();
@@ -20,7 +21,7 @@ function Display() {
         const data = resource.result.read();
         return (
           <div>
-            <img src={data.Poster} alt="Movie Poster" />
+            <Image src={data.Poster} alt="Movie Poster" rounded/>
             <h2>{data.Title}</h2>
             <h4>{data.Year}</h4>
             <h4>{data.Rated}</h4>
@@ -37,7 +38,11 @@ function Display() {
     return <Loading />;
   };
 
-  return <div>{renderMovie()}</div>;
+  return (
+    <div>
+      {renderMovie()}
+    </div>
+  )
 }
 
 export default Display;
