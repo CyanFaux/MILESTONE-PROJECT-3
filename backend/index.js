@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const defineCurrentUser = require("./middleware/defineCurrentUser");
+const path = require("path");
 
 app.use(cors());
 app.use(express.static("public"));
