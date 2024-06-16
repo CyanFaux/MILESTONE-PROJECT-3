@@ -1,11 +1,13 @@
 import React from "react";
+import Footer from "./Footer";
 
 function Splash() {
     return (
-        <div>
-            <h1>Welcome to MovieMind</h1>
-            <img src="" alt="MovieMind Logo Image" />
-        </div>
+        <React.Fragment>
+            <h1>Welcome to Movie Mind</h1>
+            <img src="" alt="Movie Mind Logo Image" />
+            <Footer />
+        </React.Fragment>
     )
 }
 
