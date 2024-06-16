@@ -1,4 +1,4 @@
-import { useState, /* useEffect, */ useContext } from "react";
+import { useState, createContext, useContext } from "react";
 import { useNavigate } from "react-router";
 import UserContext from "../contexts/CurrentUser";
 import SearchBar from "./searchBar";
@@ -24,7 +24,7 @@ function Navigation() {
     }
   };
 
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   let loginActions = (
     <>
