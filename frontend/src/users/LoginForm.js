@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
-import CurrentUserContext from "../contexts/CurrentUser";
+import UserContext from "../contexts/CurrentUser";
 
 function LoginForm() {
   const navigate = useNavigate();
 
-  const { setCurrentUser } = useContext(CurrentUserContext);
+  const { setCurrentUser } = useContext(UserContext);
 
   const [credentials, setCredentials] = useState({
     email: "",
