@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getPopularMovies } from './api'; //Need api- see Josh for api//
+import React, { useState, useEffect } from "react";
+import { getPopularMovies } from "./api"; //Need api- see Josh for api//
 
 // Functional component for Home
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
         setMovies(popularMovies);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching popular movies:', error);
+        console.error("Error fetching popular movies:", error);
       }
     }
 
@@ -35,7 +35,7 @@ function Home() {
         <p>Loading...</p>
       ) : (
         <ul>
-          {movies.map(movie => (
+          {movies.map((movie) => (
             <li key={movie.id}>{movie.title}</li>
           ))}
         </ul>

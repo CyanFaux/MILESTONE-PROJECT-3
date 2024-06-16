@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const db = require("../models");
 
-const { Movie, Review, User } = db;
+const { Movie, Review } = db;
 
 /* router.post('/', async (req, res) => {
     if (!req.body.pic) {
@@ -33,7 +33,7 @@ router.get("/:imdbId", async (req, res) => {
     const movie = await Movies.findOne({
       where: { imdbId: imdbId },
       include: {
-        association: "comments",
+        association: "reviews",
         include: "author",
       },
     });
