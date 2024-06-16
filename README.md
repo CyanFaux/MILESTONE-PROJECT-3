@@ -1,82 +1,94 @@
 # MP3 "MovieMind"
-# Nichole, Nathan, Josh, Andrew
-# Movie review app
+Nichole, Nathan, Josh, Andrew
 
-# This App's framework is based on the Rest-Rant App, 
-# refactored and repurposed for our needs.
+
+# Movie review app
+This App's framework is based on the Rest-Rant App, refactored and repurposed for our needs, utilizing AI tools. It's intended to be a place to write and post reviews on a variety of movies, pulled from the omdb api @ http://www.omdbapi.com/
+
+
+# Style UI
+ - Brain theme
+ - "Mindblown" and "Brainrot"
+
+
+## Instructions
+To run the application locally, change to client folder. Then run 'npm install'. Add a .env folder and specify PORT, DB_URI, DB_NAME, DB_PASSWORD. Then run 'nodemon'.
+
 
 # API Changelog
--Included API in fetch request
--Retrieving/viewing API data WIP 6/9/2024
--Data retrieval success 6/9/2024
+ - Included API in fetch request
+ - Retrieving/viewing API data WIP 6/9/2024
+ - Data retrieval success 6/9/2024
 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Current Errors
+ - Uncaught TypeError: react__WEBPACK_IMPORTED_MODULE_0__.useContext(...) is undefined
+    Navigation Navigation.js:27
+    React 11
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    factory react refresh:6
+    Webpack 24
+# Navigation.js:27
 
-## Available Scripts
+ - Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.
+RenderedRoute@http://localhost:3000/static/js/bundle.js:40841:7
+Routes@http://localhost:3000/static/js/bundle.js:41531:7
+Router@http://localhost:3000/static/js/bundle.js:41470:7
+BrowserRouter@http://localhost:3000/static/js/bundle.js:39420:7
+CurrentUserProvider@http://localhost:3000/static/js/bundle.js:859:29
+div
+# App react-dom.development.js:86
 
-In the project directory, you can run:
+ - Uncaught TypeError: react__WEBPACK_IMPORTED_MODULE_0__.useContext(...) is undefined
+    Navigation Navigation.js:27
+    React 12
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    factory react refresh:6
+    Webpack 24
+# Navigation.js:27
 
-### `npm start`
+ - The above error occurred in the <Navigation> component:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Navigation@http://localhost:3000/static/js/bundle.js:579:89
+Router@http://localhost:3000/static/js/bundle.js:41470:7
+BrowserRouter@http://localhost:3000/static/js/bundle.js:39420:7
+CurrentUserProvider@http://localhost:3000/static/js/bundle.js:859:29
+div
+# App
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. react-dom.development.js:18704
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Parts:
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Frontend API with Express and Node.js
+ - Express server
+ - CRUD routes
+ - Sequelize to interact with db
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# PostgreSQL Database
+ - Movies table
+    - imdb_id, integer, not null, primary key
+    - movie_title, varchar
+ - Reviews table
+    - review_id, integer, not null, primary key
+    - user_id, integer, not null, unique, foreign key/users table
+    - imbd_id, integer, not null, unique, foreign key/movies table
+    - review_rating, boolean, not null, default true
+    - review_text, varchar, 200
+ - Users table
+    - user_id, integer, not null, primary key
+    - username, varchar, 50, not null
+    - email, varchar, 100, not null
+    - password, varchar, 255, not null

@@ -1,11 +1,11 @@
-import loading from './loading.gif'
+import loading from "./loading.gif";
 
 const Loading = () => {
-    return (
-        <div>
-            <img src={loading} alt='loading...' />
-        </div>
-    )
-}
+  return (
+    <div>
+      <img src={loading} alt="loading..." />
+    </div>
+  );
+};
 
-export default Loading
+export default Loading;

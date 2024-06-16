@@ -60,14 +60,10 @@ function Navigation() {
       <SearchBar handleSearch={handleSearch} />
       <ul>
         <li>
-          <a href="/movies">
-            Search for a Movie Here
-          </a>
+          <a href="/movies">Search for a Movie Here</a>
         </li>
         <li>
-          <a href="/movies/review">
-            Add a Review
-          </a>
+          <a href="/movies/review">Add a Review</a>
         </li>
         {reviewButton}
         {loginActions}

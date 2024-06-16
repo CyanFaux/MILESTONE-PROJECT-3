@@ -7,24 +7,25 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  Movie.init({
-    movieId: {
-      type: DataTypes.SMALLINT,
-      primaryKey: true,
-      autoIncrement: true,
+  Movie.init(
+    {
+      movieId: {
+        type: DataTypes.SMALLINT,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      poster: DataTypes.STRING,
+      title: DataTypes.STRING,
+      year: DataTypes.SMALLINT,
+      director: DataTypes.STRING,
+      genre: DataTypes.STRING,
+      plot: DataTypes.STRING,
     },
-    poster: DataTypes.STRING,
-    title: DataTypes.STRING,
-    year: DataTypes.SMALLINT,
-    director: DataTypes.STRING,
-    genre: DataTypes.STRING,
-    plot: DataTypes.STRING,
-  },
-  {
-    sequelize,
-    underscored: true,
-    modelName: "Movie",
-  }
-);
-return Movie;
+    {
+      sequelize,
+      underscored: true,
+      modelName: "Movie",
+    }
+  );
+  return Movie;
 };

@@ -18,11 +18,11 @@ function App() {
         <Router>
           <Navigation />
           <Routes>
-{/*             <Route exact path="/" component={Home} /> */}
+            {/*             <Route exact path="/" component={Home} /> */}
             <Route exact path="/sign-up" component={SignUpForm} />
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/movies" component={MovieIndex} />
-            <Route exact path="/movies/new" component={MovieDetails} />            
+            <Route exact path="/movies/new" component={MovieDetails} />
             <Route exact path="/movies/:imdbId" component={MovieIndex} />
             <Route path="/" element={Error404} />
           </Routes>
