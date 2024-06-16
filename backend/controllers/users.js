@@ -12,6 +12,7 @@ router.post("/", async (req, res) => {
     role: "reviewer",
     passwordDigest: await bcrypt.hash(password, 10),
   });
+  console.log(user)
   res.json(user);
 });
 
