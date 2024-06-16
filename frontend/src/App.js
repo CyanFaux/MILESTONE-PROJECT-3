@@ -5,6 +5,7 @@ import { CurrentUserProvider, CurrentUserContext } from './contexts/CurrentUser'
 import MovieIndex from './movies/MovieIndex';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Error404 from './Error404';
+import Splash from './components/Splash';
 // import { render } from '@testing-library/react';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       </CurrentUserProvider>
       <Router>
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Splash />}/>
           <Route path="/movies/:imdbId" element={<MovieIndex />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
