@@ -8,14 +8,15 @@ function Navigation() {
   let [ searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const handleSearch = (e, term) => {
+  const handleSearch = async (e, term) => {
     e.preventDefault();
     setSearchTerm(term);
-    const resource = createResource(term);
     try {
-      const data = resource.result.read();
-      if (data && data.imdbId) {
-        navigate(`/movies/${data.imdbId}`);
+      const data = await createResource(term);
+      console.log(data)
+      console.log(data.imdbID)
+      if (data && data.imdbID) {
+        navigate(`/movies/${data.imdbID}`, {state: {movieData: data}});
       } else {
         return `Movie not found :(`;
       }
