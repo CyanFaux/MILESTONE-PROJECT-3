@@ -2,8 +2,8 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Movie extends Model {
-    static associate({ review }) {
-      Movie.hasMany(review, { as: "review", foreignKey: "movie_id" });
+    static associate({ Review }) {
+      Movie.hasMany(Review, { as: "review", foreignKey: "movie_id" });
     }
   }
 
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.SMALLINT, 
         primaryKey: true,
       },
-      title: DataTypes.STRING,
+      movieTitle: DataTypes.STRING,
     },
     {
       sequelize,

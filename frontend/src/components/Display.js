@@ -4,15 +4,15 @@ import Loading from "../Loading";
 import { createResource } from "../Request";
 
 function Display() {
-  const { imdbId } = useParams();
+  const { imdbID } = useParams();
   const [resource, setResource] = useState(null);
 
   useEffect(() => {
-    if (imdbId) {
-      const resource = createResource(imdbId);
+    if (imdbID) {
+      const resource = createResource(imdbID);
       setResource(resource);
     }
-  }, [imdbId]);
+  }, [imdbID]);
 
   const renderMovie = () => {
     if (resource) {

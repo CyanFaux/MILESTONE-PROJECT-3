@@ -14,8 +14,8 @@ function Navigation() {
     const resource = createResource(term);
     try {
       const data = resource.result.read();
-      if (data && data.imdbId) {
-        navigate(`/movies/${data.imdbId}`);
+      if (data && data.imdbID) {
+        navigate(`/movies/${data.imdbID}`);
       } else {
         return `Movie not found :(`;
       }

@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/sign-up" element={<SignUpForm />} />
             <Route exact path="/login" element={<LoginForm />} />
             <Route exact path="/movies" element={<MovieIndex />} />
-            <Route exact path="/movies/:imdbId" element={<MovieIndex />} />
+            <Route exact path="/movies/:imdbID" element={<MovieIndex />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </Router>
