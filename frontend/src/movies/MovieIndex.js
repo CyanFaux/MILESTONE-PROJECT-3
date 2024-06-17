@@ -6,7 +6,7 @@ function MovieIndex() {
   return (
     <div>
       <Display />
-      <ReviewCard />
+      {/* <ReviewCard /> */}
     </div>
   );
 }

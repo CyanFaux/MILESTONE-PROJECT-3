@@ -5,17 +5,18 @@ import SearchBar from "./searchBar";
 import { createResource } from "../Request";
 
 function Navigation() {
-  let [/* searchTerm, */ setSearchTerm] = useState("");
+  let [ searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const handleSearch = (e, term) => {
+  const handleSearch = async (e, term) => {
     e.preventDefault();
     setSearchTerm(term);
-    const resource = createResource(term);
     try {
-      const data = resource.result.read();
-      if (data && data.imdbId) {
-        navigate(`/movies/${data.imdbId}`);
+      const data = await createResource(term);
+      console.log(data)
+      console.log(data.imdbID)
+      if (data && data.imdbID) {
+        navigate(`/movies/${data.imdbID}`, {state: {movieData: data}});
       } else {
         return `Movie not found :(`;
       }
@@ -28,10 +29,10 @@ function Navigation() {
 
   let loginActions = (
     <>
-      <li style={{ float: "right" }}>
+      <li className="nav-item p-2">
         <a href="/sign-up">Sign Up</a>
       </li>
-      <li style={{ float: "right" }}>
+      <li className="nav-item p-2">
         <a href="/login">Login</a>
       </li>
     </>
@@ -39,7 +40,7 @@ function Navigation() {
 
   if (currentUser) {
     loginActions = (
-      <li style={{ float: "right" }}>
+      <li className="nav-item p-2">
         Logged in as {currentUser.firstName} {currentUser.lastName}
       </li>
     );
@@ -49,20 +50,20 @@ function Navigation() {
 
   if (currentUser) {
     reviewButton = (
-      <li>
+      <li className="nav-item p-2">
         <button onClick={() => navigate("/leave-review")}>Leave Review</button>
       </li>
     );
   }
 
   return (
-    <nav>
+    <nav className="d-flex justify-content-between">
+      <h2 className="p-2">
+        <a href="/" className="text-dark link-underline link-underline-opacity-0">MovieMind</a>
+      </h2>
       <SearchBar handleSearch={handleSearch} />
-      <ul>
-        <li>
-          <a href="/movies">Search for a Movie Here</a>
-        </li>
-        <li>
+      <ul className="nav">
+        <li className="nav-item p-2">
           <a href="/movies/review">Add a Review</a>
         </li>
         {reviewButton}
