@@ -22,8 +22,11 @@ To run the application locally, change to client folder. Then run 'npm install'.
  - Data retrieval success 6/9/2024
 
 
-## Current Errors
- - 
+## Current Missing Features/Errors
+ - Cors requests failing
+ - Network error when attempting to sign up
+ - About us, Contact, Privacy Policy, and ReviewCard pages not set up
+ - Login needs functionality and to be blocked for non-users
 
 
 # Parts:
