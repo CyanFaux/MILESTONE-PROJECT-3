@@ -1,43 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Loading from "../Loading";
 import { createResource } from "../Request";
+import Image from "react-bootstrap/Image"
 
 function Display() {
   const { imdbID } = useParams();
-  const [resource, setResource] = useState(null);
+  const location = useLocation()
+  const data = location.state?.movieData
 
-  useEffect(() => {
-    if (imdbID) {
-      const resource = createResource(imdbID);
-      setResource(resource);
-    }
-  }, [imdbID]);
+  if(!data) {
+    return <Loading />
+  }
 
-  const renderMovie = () => {
-    if (resource) {
-      try {
-        const data = resource.result.read();
-        return (
-          <div>
-            <img src={data.Poster} alt="Movie Poster" />
-            <h2>{data.Title}</h2>
-            <h4>{data.Year}</h4>
-            <h4>{data.Rated}</h4>
-            <h3>IMDB Rating: {data.imdbRating}</h3>
-          </div>
-        );
-      } catch (error) {
-        if (error instanceof Promise) {
-          return <Loading />;
-        }
-        throw error;
-      }
-    }
-    return <Loading />;
-  };
+  if (data.imdbID !== imdbID) {
+    return `Invalid ID`
+  }
 
-  return <div>{renderMovie()}</div>;
+  return (
+    <div>
+      <Image src={data.Poster} alt="Movie Poster" rounded/>
+      <h2>{data.Title}</h2>
+      <h4>{data.Year}</h4>
+      <h4>{data.Rating}</h4>
+      <h3>IMDB Rating: {data.imdbRating}</h3>
+    </div>
+  )
 }
 
 export default Display;
