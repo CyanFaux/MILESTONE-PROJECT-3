@@ -1,6 +1,8 @@
 # MP3 "MovieMind"
 Nichole, Nathan, Josh, Andrew
 
+### Render deployment
+https://milestone-project-3.onrender.com/
 
 ## Movie review app
 This App's framework is based on the Rest-Rant App, refactored and repurposed for our needs, utilizing AI tools. It's intended to be a place to write and post reviews on a variety of movies pulled from the omdb api 
