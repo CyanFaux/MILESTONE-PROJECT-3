@@ -2,20 +2,20 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Review extends Model {
-    static associate({ user, movie }) {
-      Review.belongsTo(movie, { as: "movie", foreignKey: "imdb_id" });
-      Review.belongsTo(user, { as: "user", foreignKey: "user_id" });
+    static associate({ User, Movie }) {
+      Review.belongsTo(Movie, { as: "movie", foreignKey: "imdb_id" });
+      Review.belongsTo(User, { as: "user", foreignKey: "user_id" });
     }
   }
   Review.init(
     {
-      reviewId: {
+      review_id: {
         type: DataTypes.SMALLINT,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      userId: {
+      user_id: {
         type: DataTypes.SMALLINT,
         references: {
           model: "user",
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         allowNull: false,
       },
-      imdbId: {
+      imdb_id: {
         type: DataTypes.SMALLINT,
         references: {
           model: "movie",
@@ -31,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         allowNull: false,
       },
-      reviewRating: { type: DataTypes.BOOLEAN, allowNull: false },
-      reviewText: DataTypes.STRING,
+      review_rating: { type: DataTypes.BOOLEAN, allowNull: false },
+      review_text: DataTypes.STRING,
     },
     {
       sequelize,

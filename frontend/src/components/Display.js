@@ -6,7 +6,6 @@ import Image from "react-bootstrap/Image"
 
 function Display() {
   const { imdbID } = useParams();
-
   const location = useLocation()
   const data = location.state?.movieData
 
